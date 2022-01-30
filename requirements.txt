@@ -1,25 +1,25 @@
 certifi==2020.6.20
-cffi @ file:///D:/bld/cffi_1636046293990/work
+cffi==1.15.0
 click==7.1.2
-cryptography @ file:///D:/bld/cryptography_1639699508385/work
-dnspython @ file:///home/conda/feedstock_root/build_artifacts/dnspython_1622405147478/work
+cryptography==36.0.1
+dnspython==2.1.0
 Flask==1.1.2
-idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1609836280497/work
+idna==3.1
 itsdangerous==1.1.0
 Jinja2==2.11.2
 MarkupSafe==1.1.1
 mkl-fft==1.3.1
-mkl-random @ file:///C:/ci/mkl_random_1626186184278/work
+mkl-random==1.2.2
 mkl-service==2.4.0
 mysql-connector-python==8.0.26
-numpy @ file:///C:/ci/numpy_and_numpy_base_1634106873763/work
-pandas @ file:///C:/ci/pandas_1602083338010/work
+numpy==1.21.2
+pandas==1.1.3
 protobuf==3.18.1
-pycparser @ file:///home/conda/feedstock_root/build_artifacts/pycparser_1636257122734/work
-PyMySQL @ file:///C:/ci/pymysql_1601579814119/work
+pycparser==2.21
+PyMySQL==0.10.1
 python-dateutil==2.8.1
 pytz==2020.1
 six==1.15.0
-SQLAlchemy @ file:///C:/ci/sqlalchemy_1598374833867/work
+SQLAlchemy==1.3.19
 Werkzeug==1.0.1
 wincertstore==0.2
