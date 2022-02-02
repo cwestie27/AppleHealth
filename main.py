@@ -24,20 +24,6 @@ UPLOAD_FOLDER = 'static/files'
 app.config['UPLOAD_FOLDER'] =  UPLOAD_FOLDER
 
 
-# Database
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="Knights11",
-  database="csvdata"
-)
-mycursor = mydb.cursor()
-mycursor.execute("SHOW Tables")
-# View All Database
-for x in mycursor:
-  print(x)
-
-
 #submittodbcw = pd.read_csv(r"C:\Users\16158\CWScratch\Health Data\CWLWHealthData2022-01-25.csv")
 ENV = 'dev'
 
