@@ -25,9 +25,9 @@ app.config['UPLOAD_FOLDER'] =  UPLOAD_FOLDER
 
 
 #submittodbcw = pd.read_csv(r"C:\Users\16158\CWScratch\Health Data\CWLWHealthData2022-01-25.csv")
-ENV = 'dev'
+ENV = 'prod'
 
-if ENV == 'prod':
+if ENV == 'dev':
 
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}"
                            .format(user="root",
