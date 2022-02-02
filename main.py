@@ -39,13 +39,20 @@ for x in mycursor:
 
 
 #submittodbcw = pd.read_csv(r"C:\Users\16158\CWScratch\Health Data\CWLWHealthData2022-01-25.csv")
-# engine = create_engine('mysql://USER_NAME_HERE:PASS_HERE@HOST_ADRESS_HERE/DB_NAME_HERE')
-engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}"
-                       .format(user="root",
-                               pw="Knights11",
-                               db="csvdata"))
+ENV = 'dev'
 
+if ENV == 'prod':
 
+    engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}"
+                           .format(user="root",
+                                   pw="Knights11",
+                                   db="csvdata"))
+else:
+    engine = create_engine("mysql+pymysql://{user}:{pw}@{host}/{db}"
+                           .format(user="rlyf4otyqxxspeg2",
+                                   host='s29oj5odr85rij2o.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306',
+                                   pw="k5evpiaggcflg26k",
+                                   db="i72q4yrl61imjedb"))
 
 
 # Root URL
@@ -56,20 +63,21 @@ def index():
 
 
 # Get the uploaded files
-@app.route("/", methods=['POST'])
+@app.route("/submit", methods=['POST'])
 def uploadFiles():
       # get the uploaded file
       uploaded_file = request.files['file']
+      emailaddress = request.form['email']
       if uploaded_file.filename != '':
            file_path = os.path.join(app.config['UPLOAD_FOLDER'], uploaded_file.filename)
           # set the file path
            uploaded_file.save(file_path)
-           parseCSV(file_path)
+           parseCSV(file_path, emailaddress)
           # save the file
       #return redirect(url_for('index'))
       return render_template('success.html')
 
-def parseCSV(filePath):
+def parseCSV(filePath, emailaddress):
       # CVS Column Names
       #col_names = ['first_name','last_name','address', 'street', 'state' , 'zip']
       # Use Pandas to parse the CSV file
@@ -92,7 +100,7 @@ def parseCSV(filePath):
       #csvData = csvData.where((pd.notnull(csvData)), None)
       #csvData = csvData.where((pd.notnull(csvData)), None)
       with engine.begin() as connection:
-          merged.to_sql(name='testaddresses3', con=connection, if_exists='append', index=False)
+          merged.to_sql(name=emailaddress, con=connection, if_exists='append', index=False)
 
 
 
